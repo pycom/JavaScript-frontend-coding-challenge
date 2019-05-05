@@ -1,12 +1,18 @@
 export default class Autocomplete {
   constructor(rootEl, options = {}) {
-    options = Object.assign({ numOfResults: 10, data: [] }, options);
+    options = Object.assign({ numOfResults: 10, data: [], endPoint: ""}, options);
     Object.assign(this, { rootEl, options });
 
     this.init();
   }
 
   onQueryChange(query) {
+
+      this.getUsers(query, this.options.endPoint).then(users => {
+        console.log(users);
+        this.updateDropdown(users.slice(0, this.options.numOfResults));
+      });
+
     // Get data for the dropdown
     let results = this.getResults(query, this.options.data);
     results = results.slice(0, this.options.numOfResults);
@@ -25,6 +31,24 @@ export default class Autocomplete {
       return item.text.toLowerCase().includes(query.toLowerCase());
     });
 
+    return results;
+  }
+
+  getUsers(query, endPoint){
+    if(!query) return [];
+
+    let urlEndpoint = endPoint.replace("{query}", query);
+    let results = fetch(urlEndpoint).then(function(res){
+    									                      return res.json();
+                                     })
+                                     .then(function(data){
+                                       return data.items.map(user => ({
+                                         text: user.login,
+                                         id: user.id
+                                       })).filter((user) => {
+                                        return user.text.toLowerCase().includes(query.toLowerCase());
+                                       })
+                                     })
     return results;
   }
 

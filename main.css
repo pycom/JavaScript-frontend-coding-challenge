@@ -29,9 +29,6 @@ ul {
   padding: 5px;
   cursor: pointer;
 }
-.result:hover {
-  background-color: #eee;
-}
 
 form {
   display: flex;
@@ -46,4 +43,26 @@ input {
   width: 100%;
   padding: 5px;
   border: 1px solid #ccc;
+}
+
+.dropdowns {
+  display: flex;
+}
+.dropdowns strong {
+  display: block;
+}
+.result {
+  padding: 4px 8px;
+}
+img {
+  width: 32px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.results .selected {
+  background: #fdf;
+}
+.selected:focus {
+  background: #fdf;
 }

@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Autocomplete</title>
+    <link rel="stylesheet" href="/main.css" />
   </head>
   <body>
-    <!-- Using an array object -->
-    <div class="state-group form-group">
-      <label>State:</label>
-      <div id="state"></div>
+    <div class="dropdowns">
+      <div id="states" class="form-group">
+        <label>State:</label>
+      </div>
+      <div id="github_users" class="form-group">
+        <label>Github User:</label>
+      </div>
     </div>
-
-    <!-- Using a HTTP endpoint -->
-    <!-- <div class="gh-users-group form-group">
-      <label>Github User:</label>
-      <div id="gh-user"></div>
-    </div> -->
-
-    <script src="/dist/bundle.js"></script>
+    <script src="/build/bundle.js"></script>
   </body>
 </html>
